@@ -8,11 +8,23 @@ const app = express();
 const PORT = 3001;
 const PREVIEW_DIR = path.join(__dirname, 'preview');
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://*.vercel.app'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Serve static preview files
 app.use('/preview', express.static(PREVIEW_DIR));
+
+// Health check
+app.get('/', (req, res) => {
+  res.json({ status: 'Backend is running', endpoints: ['/api/execute', '/api/save-preview', '/api/sync-files'] });
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK' });
+});
 
 // Ensure preview directory exists
 if (!fs.existsSync(PREVIEW_DIR)) {
