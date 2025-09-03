@@ -41,7 +41,8 @@ app.post('/api/execute', (req, res) => {
 
   const cwd = workingDir || path.join(__dirname, 'preview');
   
-  exec(command, { cwd, timeout: 30000 }, (error, stdout, stderr) => {
+  const shell = process.platform === 'win32' ? 'cmd.exe' : '/bin/bash';
+  exec(command, { cwd, timeout: 30000, shell }, (error, stdout, stderr) => {
     const output = stdout || stderr || (error ? error.message : 'Command executed');
     
     res.json({
