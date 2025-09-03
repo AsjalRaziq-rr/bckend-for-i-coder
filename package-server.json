@@ -2,7 +2,7 @@
   "name": "command-server",
   "version": "1.0.0",
   "scripts": {
-    "start": "node server.js"
+    "start": "node test-server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
