@@ -4,7 +4,7 @@
   "description": "Backend server for Fast Web Code Editor",
   "main": "server.cjs",
   "scripts": {
-    "start": "node server.cjs",
+    "start": "node test-server.js",
     "dev": "nodemon server.cjs"
   },
   "dependencies": {
