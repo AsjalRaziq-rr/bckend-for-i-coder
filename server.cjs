@@ -9,10 +9,9 @@ const PORT = process.env.PORT || 3001;
 const PREVIEW_DIR = path.join(__dirname, 'preview');
 
 app.use(cors({
-  origin: 'https://frontend-i-coder.vercel.app',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
